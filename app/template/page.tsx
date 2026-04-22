@@ -39,14 +39,24 @@ type TemplateBlock = {
       text?: string
     }>
   }>
-  leftImage?: unknown
+  leftImage?: {
+  asset?: {
+    _ref?: string
+  }
+  alt?: string
+}
   rightHeading?: string
   rightText?: Array<{
     children?: Array<{
       text?: string
     }>
   }>
-  rightImage?: unknown
+  rightImage?: {
+  asset?: {
+    _ref?: string
+  }
+  alt?: string
+}
 }
 
 type TemplatePageData = {
