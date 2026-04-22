@@ -1,0 +1,72 @@
+.wrapper {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dash-text-muted);
+  margin-bottom: 20px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.barGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  min-width: 0;
+}
+
+.barWrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 100%;
+  background: var(--dash-accent);
+  border-radius: 3px 3px 0 0;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+
+.bar:hover {
+  opacity: 1;
+}
+
+.barLabel {
+  font-size: 9px;
+  color: var(--dash-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .chart {
+    gap: 4px;
+  }
+
+  /* Show every 5th label */
+  .barGroup:nth-child(5n) .barLabel {
+    display: block;
+  }
+}

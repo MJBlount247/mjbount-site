@@ -1,0 +1,113 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.heroImageSection {
+  width: 100%;
+}
+
+.heroImageWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.contentSection {
+  background: #ffffff;
+  color: #000000;
+  padding: 64px 24px 80px;
+}
+
+.contentInner {
+  padding-inline: 0;
+}
+
+.content {
+  display: grid;
+  gap: 32px;
+}
+
+.textBlock {
+  display: grid;
+  gap: 18px;
+}
+
+.textBlockHeading {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 10px;
+  font-size: 12px;
+  text-transform: capitalize;
+  color: var(--color-bg);
+  background-color: var(--color-text-secondary);
+}
+
+.textBlockBody {
+  display: grid;
+  gap: 18px;
+  color: #000000;
+}
+
+.textBlockBody :global(p) {
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.textBlockBody :global(h2),
+.textBlockBody :global(h3),
+.textBlockBody :global(h4) {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #000000;
+}
+
+.textBlockBody :global(ul),
+.textBlockBody :global(ol) {
+  padding-left: 20px;
+}
+
+.textBlockBody :global(li) {
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.imageBlock {
+  display: grid;
+  gap: 14px;
+}
+
+.contentImageWrap {
+  overflow: hidden;
+}
+
+.contentImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imageCaption {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5c5c5c;
+}
+
+@media (max-width: 767px) {
+  .contentSection {
+    padding: 48px 20px 64px;
+  }
+
+  .textBlockBody :global(p),
+  .textBlockBody :global(li) {
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,149 @@
+.content {
+  display: grid;
+  gap: 24px;
+}
+
+.textSection {
+  display: grid;
+  gap: 16px;
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+.headingTwo {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: 16px;
+}
+
+.headingThree {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: 12px;
+}
+
+.blockquote {
+  padding-left: 20px;
+  border-left: 2px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  padding-left: 20px;
+  color: var(--color-text-secondary);
+}
+
+.listItem {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.imageWrap {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sectionHeading {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.sectionBody {
+  display: grid;
+  gap: 24px;
+}
+
+.accordion {
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--color-bg-card);
+}
+
+.accordionSummary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  cursor: pointer;
+}
+
+.accordionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.accordionHeading {
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #111111;
+}
+
+.accordionArrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  color: #111111;
+}
+
+.accordion[open] .accordionArrow {
+  transform: rotate(225deg);
+}
+
+.accordionBody {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.accordion[data-colour="green"] .accordionSummary {
+  background: var(--color-text-secondary);
+}
+
+.accordion[data-colour="charcoal"] .accordionSummary {
+  background: #2b2b2b;
+}
+
+.accordion[data-colour="charcoal"] .accordionHeading,
+.accordion[data-colour="charcoal"] .accordionArrow,
+.accordion[data-colour="slate"] .accordionHeading,
+.accordion[data-colour="slate"] .accordionArrow {
+  color: #f5f5f5;
+}
+
+.accordion[data-colour="sand"] .accordionSummary {
+  background: #d7c6a1;
+}
+
+.accordion[data-colour="slate"] .accordionSummary {
+  background: #3b4c63;
+}

@@ -1,0 +1,156 @@
+.page {
+  min-height: 100vh;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 18px;
+}
+
+.summaryBar {
+  padding: 0 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.gridSection {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.emptyState {
+  padding: 48px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.backLink:hover {
+  color: var(--color-text-primary);
+}
+
+.heroSiteLink {
+  margin-top: 8px;
+}
+
+.tags { 
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 10px;
+  color: var(--color-bg);
+  font-size: 12px;
+  text-transform: capitalize;
+  background-color: var(--color-text-secondary);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.metaLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.metaValue {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.metaLink {
+  color: var(--color-text-secondary);
+  
+  text-underline-offset: 3px;
+}
+
+.heroImageSection {
+  min-width: 0;
+}
+
+.heroImageWrap {
+  overflow: hidden; 
+  
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heroImagePlaceholder {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.contentSection {
+  margin-top: 64px;
+  padding-bottom: 40px;
+}
+
+.contentIntro {
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 900px) {
+  .metaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .summaryBar {
+    flex-direction: column;
+  }
+
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroImagePlaceholder {
+    min-height: 260px;
+  }
+}

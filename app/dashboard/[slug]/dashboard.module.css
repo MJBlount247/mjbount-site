@@ -1,0 +1,112 @@
+.shell {
+  min-height: 100vh;
+  background: var(--dash-bg);
+  color: var(--dash-text-primary);
+  font-family: var(--font-primary);
+}
+
+.header {
+  border-bottom: 1px solid var(--dash-border);
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.back {
+  font-size: 13px;
+  color: var(--dash-text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: inline-block;
+}
+
+.back:hover {
+  color: var(--dash-text-primary);
+}
+
+.brandHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoWrap {
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  object-fit: contain;
+  max-height: 40px;
+  width: auto;
+}
+
+.clientName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dash-text-primary);
+  line-height: 1.1;
+}
+
+.periodLabel {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+}
+
+.summaryPlaceholder {
+  font-size: 14px;
+  color: var(--dash-text-muted);
+  padding: 20px 0;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}

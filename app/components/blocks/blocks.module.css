@@ -1,0 +1,162 @@
+.section {
+  padding-block: 72px;
+}
+
+.sectionHeader {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.heading {
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 720px;
+  color: var(--color-text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.postCard {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.postImageLink {
+  display: block;
+  overflow: hidden;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.postImagePlaceholder {
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  background: linear-gradient(135deg, #141414 0%, #1f1f1f 100%);
+}
+
+.postContent {
+  display: grid;
+  gap: 14px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 10px;
+  color: var(--color-bg);
+  font-size: 12px;
+  text-transform: capitalize;
+  background-color: var(--color-text-secondary);
+}
+
+.date {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.postTitle {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.excerpt {
+  color: var(--color-text-secondary);
+}
+
+.cta {
+  padding-block: 72px;
+}
+
+.ctaInner {
+  padding: 48px;
+  border: 1px solid var(--color-border);
+  display: grid;
+  gap: 20px;
+}
+
+.ctaDark {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+}
+
+.ctaLight {
+  background: #ffffff;
+  color: #000000;
+}
+
+.ctaAccent {
+  background: var(--color-text-secondary);
+  color: var(--color-bg);
+}
+
+.ctaAccent .intro {
+  color: var(--color-bg);
+}
+
+.emptyState {
+  padding: 48px 24px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .postsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .section,
+  .cta {
+    padding-block: 56px;
+  }
+
+  .ctaInner {
+    padding: 28px 24px;
+  }
+}

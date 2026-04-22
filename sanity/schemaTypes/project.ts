@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const project = defineType({
   name: 'project',
@@ -54,12 +54,31 @@ export const project = defineType({
       name: 'body',
       title: 'Project Content',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }],
+      of: [
+        defineArrayMember({ type: 'projectTextBlock' }),
+        defineArrayMember({ type: 'projectAccordionTextBlock' }),
+        defineArrayMember({ type: 'imageBlock' }),
+        defineArrayMember({ type: 'block' }),
+        defineArrayMember({ type: 'image', options: { hotspot: true } }),
+      ],
     }),
     defineField({
       name: 'projectUrl',
-      title: 'Live Site URL',
-      type: 'url',
+      title: 'Live Site Link',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Link Text',
+          type: 'string',
+          description: 'The text shown on the site, for example "Acme Studio".',
+        }),
+        defineField({
+          name: 'url',
+          title: 'URL',
+          type: 'url',
+        }),
+      ],
     }),
     defineField({
       name: 'completedAt',

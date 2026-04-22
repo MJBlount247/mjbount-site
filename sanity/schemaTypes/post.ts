@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const post = defineType({
   name: 'post',
@@ -12,12 +12,19 @@ export const post = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: { source: 'title' },
       validation: (Rule) => Rule.required(),
     }),
+
+    
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
@@ -50,10 +57,14 @@ export const post = defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'content',
+      title: 'Content',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }],
+      of: [
+        defineArrayMember({ type: 'textBlock' }),
+        defineArrayMember({ type: 'imageBlock' }),
+        
+      ],
     }),
   ],
 })

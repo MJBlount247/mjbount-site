@@ -1,0 +1,31 @@
+{
+  "slug": "back-garden-pizzeria",
+  "name": "Back Garden Pizzeria",
+  "tagline": "Wood-fired pizza in the heart of Cambridge",
+  "brand": {
+    "primary": "#C8352A",
+    "secondary": "#F5F0E8",
+    "accent": "#1A1A1A",
+    "primaryText": "#FFFFFF",
+    "secondaryText": "#1A1A1A"
+  },
+  "logo": {
+    "dark": "/clients/back-garden-pizzeria/logo-dark.svg",
+    "darkFull": "/clients/back-garden-pizzeria/logo-dark-full.svg",
+    "light": "/clients/back-garden-pizzeria/logo-light.svg",
+    "red": "/clients/back-garden-pizzeria/logo-red.svg",
+    "redFull": "/clients/back-garden-pizzeria/logo-red-full.svg"
+  },
+  "ga4PropertyId": "properties/316842951",
+  "gtmContainerId": "GTM-WKXP7QR",
+  "business": {
+    "type": "Restaurant",
+    "location": "Cambridge, UK",
+    "website": "https://backgardenpizzeria.co.uk",
+    "services": ["Wood-fired pizza", "Private events", "Catering", "Takeaway"]
+  },
+  "toneOfVoice": "Warm, community-focused, artisan. Emphasise quality ingredients, the wood-fired experience, and the welcoming Cambridge atmosphere.",
+  "dashboard": {
+    "reportingPeriodDays": 30
+  }
+}
