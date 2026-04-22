@@ -15,7 +15,7 @@ type TemplateBlock = {
   count?: number
   showViewAll?: boolean
   categoryFilter?: string
-  theme?: 'light' | 'dark' | 'accent'
+  theme?: 'light' | 'dark'
   primaryCta?: {
     label?: string
     href?: string
