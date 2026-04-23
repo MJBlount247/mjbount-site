@@ -39,3 +39,11 @@ export function trendLabel(trend: AnalyticsSummary["trend"]): string {
   if (trend > 0) return `+${trend.toFixed(0)}%`;
   return `${trend.toFixed(0)}%`;
 }
+
+export function lightenHex(hex: string, amount: number): string {
+  const num = parseInt(hex.replace("#", ""), 16);
+  const r = Math.min(255, (num >> 16) + amount);
+  const g = Math.min(255, ((num >> 8) & 0xff) + amount);
+  const b = Math.min(255, (num & 0xff) + amount);
+  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}

@@ -23,8 +23,7 @@
 }
 
 .logo {
-  object-fit: contain;
-  max-height: 60px;
+  object-fit: contain;  
   width: auto;
 }
 

@@ -3,13 +3,9 @@ import { formatNumber, sourcesWithPercent } from "@/lib/analytics";
 
 import styles from "./sources-chart.module.css";
 
-type SourcesChartProps = {
-  sources: TrafficSource[];
-};
-
 const SOURCE_LABELS: Record<string, string> = {
   "(direct)": "Direct",
-  "google": "Google",
+  google: "Google",
   "instagram.com": "Instagram",
   "facebook.com": "Facebook",
   "tripadvisor.com": "Tripadvisor",
@@ -22,7 +18,7 @@ function sourceLabel(source: string, medium: string): string {
   return base;
 }
 
-export function SourcesChart({ sources }: SourcesChartProps) {
+export function SourcesChart({ sources }: { sources: TrafficSource[] }) {
   const withPct = sourcesWithPercent(sources);
 
   return (

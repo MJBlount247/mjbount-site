@@ -9,7 +9,7 @@ export default async function DashboardIndex() {
 
   const clientsWithData = await Promise.all(
     clients.map(async (client) => {
-      const analytics = await getAnalytics(client.slug, client.ga4PropertyId, client.dashboard.reportingPeriodDays);
+      const analytics = await getAnalytics(client);
       return { client, analytics };
     })
   );
@@ -19,7 +19,9 @@ export default async function DashboardIndex() {
       <header className={styles.header}>
         <div>
           <h1 className={styles.title}>Client dashboard</h1>
-          <p className={styles.subtitle}>MJBlount Web Design · {clients.length} active client{clients.length !== 1 ? "s" : ""}</p>
+          <p className={styles.subtitle}>
+            MJBlount Web Design · {clients.length} active client{clients.length !== 1 ? "s" : ""}
+          </p>
         </div>
       </header>
 

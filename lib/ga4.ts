@@ -1,65 +1,81 @@
-import type { AnalyticsData, DailyMetric, TopPage, TrafficSource } from "./types";
+import type { AnalyticsData, ClientConfig, DailyMetric, TopPage, TrafficSource } from "./types";
 
-// Generates mock analytics data shaped like a real Cambridge pizzeria.
-// Replace this function body with real GA4 Data API calls once
-// GOOGLE_APPLICATION_CREDENTIALS is configured.
-function buildMockData(slug: string, days: number): AnalyticsData {
-  const seed = slug.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const rng = (min: number, max: number, offset = 0) => {
-    const x = Math.sin(seed + offset) * 10000;
-    return Math.floor(min + ((x - Math.floor(x)) * (max - min)));
-  };
+async function fetchFromGA4(client: ClientConfig, days: number): Promise<AnalyticsData> {
+  const { BetaAnalyticsDataClient } = await import("@google-analytics/data");
+  const analyticsClient = new BetaAnalyticsDataClient();
+  const property = `properties/${client.ga4_property_id}`;
+  const dateRange = { startDate: `${days}daysAgo`, endDate: "today" };
 
-  // Daily sessions with realistic restaurant traffic patterns (Thu–Sun peaks)
-  const daily: DailyMetric[] = Array.from({ length: days }, (_, i) => {
-    const dayOfWeek = (3 + i) % 7; // start mid-week
-    const isWeekend = dayOfWeek >= 4; // Thu, Fri, Sat, Sun higher
-    const base = isWeekend ? rng(38, 58, i) : rng(22, 38, i + 100);
-    const sessions = base;
-    return {
-      date: formatDateOffset(i - days + 1),
-      sessions,
-      users: Math.floor(sessions * rng(72, 88, i + 200) / 100),
-      pageviews: Math.floor(sessions * rng(270, 380, i + 300) / 100),
-    };
-  });
+  const [[dailyRes], [summaryRes], [sourcesRes], [pagesRes]] = await Promise.all([
+    analyticsClient.runReport({
+      property,
+      dateRanges: [dateRange],
+      dimensions: [{ name: "date" }],
+      metrics: [{ name: "sessions" }, { name: "activeUsers" }, { name: "screenPageViews" }],
+      orderBys: [{ dimension: { dimensionName: "date" } }],
+    }),
+    analyticsClient.runReport({
+      property,
+      dateRanges: [dateRange, { startDate: `${days * 2}daysAgo`, endDate: `${days + 1}daysAgo` }],
+      metrics: [
+        { name: "sessions" },
+        { name: "activeUsers" },
+        { name: "screenPageViews" },
+        { name: "bounceRate" },
+        { name: "averageSessionDuration" },
+      ],
+    }),
+    analyticsClient.runReport({
+      property,
+      dateRanges: [dateRange],
+      dimensions: [{ name: "sessionSource" }, { name: "sessionMedium" }],
+      metrics: [{ name: "sessions" }],
+      orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+      limit: 6,
+    }),
+    analyticsClient.runReport({
+      property,
+      dateRanges: [dateRange],
+      dimensions: [{ name: "pagePath" }, { name: "pageTitle" }],
+      metrics: [{ name: "screenPageViews" }, { name: "averageSessionDuration" }],
+      orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
+      limit: 6,
+    }),
+  ]);
 
-  const totalSessions = daily.reduce((s, d) => s + d.sessions, 0);
-  const totalUsers = daily.reduce((s, d) => s + d.users, 0);
-  const totalPageviews = daily.reduce((s, d) => s + d.pageviews, 0);
+  const daily: DailyMetric[] = (dailyRes.rows ?? []).map((row) => ({
+    date: row.dimensionValues?.[0].value ?? "",
+    sessions: Number(row.metricValues?.[0].value ?? 0),
+    users: Number(row.metricValues?.[1].value ?? 0),
+    pageviews: Number(row.metricValues?.[2].value ?? 0),
+  }));
 
-  // Compare to a synthetic previous period (slightly different seed)
-  const prevSessions = Math.floor(totalSessions * rng(82, 118, 999) / 100);
-  const trend = prevSessions > 0
-    ? Math.round(((totalSessions - prevSessions) / prevSessions) * 100)
-    : 0;
+  const cur = summaryRes.rows?.[0];
+  const prev = summaryRes.rows?.[1];
+  const curSessions = Number(cur?.metricValues?.[0].value ?? 0);
+  const prevSessions = Number(prev?.metricValues?.[0].value ?? 1);
 
-  const sources: TrafficSource[] = [
-    { source: "google", medium: "organic", sessions: Math.floor(totalSessions * 0.31) },
-    { source: "(direct)", medium: "(none)", sessions: Math.floor(totalSessions * 0.28) },
-    { source: "google", medium: "cpc", sessions: Math.floor(totalSessions * 0.18) },
-    { source: "instagram.com", medium: "referral", sessions: Math.floor(totalSessions * 0.12) },
-    { source: "facebook.com", medium: "referral", sessions: Math.floor(totalSessions * 0.07) },
-    { source: "tripadvisor.com", medium: "referral", sessions: Math.floor(totalSessions * 0.04) },
-  ];
+  const sources: TrafficSource[] = (sourcesRes.rows ?? []).map((row) => ({
+    source: row.dimensionValues?.[0].value ?? "(direct)",
+    medium: row.dimensionValues?.[1].value ?? "(none)",
+    sessions: Number(row.metricValues?.[0].value ?? 0),
+  }));
 
-  const topPages: TopPage[] = [
-    { path: "/", title: "Home", pageviews: Math.floor(totalPageviews * 0.34), avgDurationSeconds: 87 },
-    { path: "/menu", title: "Menu", pageviews: Math.floor(totalPageviews * 0.28), avgDurationSeconds: 142 },
-    { path: "/book", title: "Book a Table", pageviews: Math.floor(totalPageviews * 0.16), avgDurationSeconds: 203 },
-    { path: "/about", title: "Our Story", pageviews: Math.floor(totalPageviews * 0.10), avgDurationSeconds: 95 },
-    { path: "/events", title: "Private Events", pageviews: Math.floor(totalPageviews * 0.07), avgDurationSeconds: 118 },
-    { path: "/contact", title: "Contact", pageviews: Math.floor(totalPageviews * 0.05), avgDurationSeconds: 64 },
-  ];
+  const topPages: TopPage[] = (pagesRes.rows ?? []).map((row) => ({
+    path: row.dimensionValues?.[0].value ?? "/",
+    title: row.dimensionValues?.[1].value ?? "",
+    pageviews: Number(row.metricValues?.[0].value ?? 0),
+    avgDurationSeconds: Math.round(Number(row.metricValues?.[1].value ?? 0)),
+  }));
 
   return {
     summary: {
-      sessions: totalSessions,
-      users: totalUsers,
-      pageviews: totalPageviews,
-      bounceRate: rng(44, 58, 500) + rng(0, 10, 501) / 10,
-      avgSessionDurationSeconds: rng(85, 145, 600),
-      trend,
+      sessions: curSessions,
+      users: Number(cur?.metricValues?.[1].value ?? 0),
+      pageviews: Number(cur?.metricValues?.[2].value ?? 0),
+      bounceRate: Number(cur?.metricValues?.[3].value ?? 0) * 100,
+      avgSessionDurationSeconds: Math.round(Number(cur?.metricValues?.[4].value ?? 0)),
+      trend: prevSessions > 0 ? Math.round(((curSessions - prevSessions) / prevSessions) * 100) : 0,
     },
     daily,
     sources,
@@ -78,13 +94,6 @@ function formatDateOffset(offsetDays: number): string {
   return d.toISOString().slice(0, 10);
 }
 
-export async function getAnalytics(slug: string, propertyId: string, days = 30): Promise<AnalyticsData> {
-  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    return buildMockData(slug, days);
-  }
-
-  // Real GA4 Data API implementation goes here.
-  // Use the @google-analytics/data package or REST API with service account auth.
-  // Return data shaped as AnalyticsData.
-  return buildMockData(slug, days);
+export async function getAnalytics(client: ClientConfig, days = 30): Promise<AnalyticsData> {
+  return fetchFromGA4(client, days);
 }

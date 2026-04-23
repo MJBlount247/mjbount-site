@@ -14,27 +14,29 @@ async function generateSummary(client: ClientConfig, analytics: AnalyticsData): 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return "";
 
-  const { summary, sources, topPages, period } = analytics;
+  const { summary, sources, period } = analytics;
 
-  const prompt = `You are a digital marketing analyst. Write a concise 2–3 sentence performance summary for ${client.name}, a ${client.business.type} in ${client.business.location}.
-
-Analytics for the last ${period.days} days:
-- Sessions: ${formatNumber(summary.sessions)} (${trendLabel(summary.trend)} vs previous period)
-- Users: ${formatNumber(summary.users)}
-- Pageviews: ${formatNumber(summary.pageviews)}
-- Bounce rate: ${formatPercent(summary.bounceRate)}
-- Avg session duration: ${formatDuration(summary.avgSessionDurationSeconds)}
-- Top source: ${sources[0]?.source} / ${sources[0]?.medium} (${sources[0] ? Math.round((sources[0].sessions / summary.sessions) * 100) : 0}%)
-- Top page: ${topPages[0]?.path} (${formatNumber(topPages[0]?.pageviews ?? 0)} views)
-
-Tone: ${client.toneOfVoice}
-
-Keep it factual and actionable. Do not use bullet points. Do not use headings.`;
+  const prompt = `You are a website analytics assistant for ${client.client}.
+Write a concise 3-paragraph plain-English summary for the business owner.
+Be specific, actionable, encouraging. No jargon. No markdown.
+Data: ${JSON.stringify({
+    period: `Last ${period.days} days`,
+    sessions: formatNumber(summary.sessions),
+    trend: trendLabel(summary.trend) + " vs previous period",
+    users: formatNumber(summary.users),
+    pageviews: formatNumber(summary.pageviews),
+    bounceRate: formatPercent(summary.bounceRate),
+    avgSessionDuration: formatDuration(summary.avgSessionDurationSeconds),
+    topSource: `${sources[0]?.source} / ${sources[0]?.medium}`,
+    keyConversions: client.website.key_conversions,
+  })}
+Tone: ${client.brand.tone_of_voice}
+Business: ${client.brand.brand_personality}`;
 
   const anthropic = new Anthropic({ apiKey });
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-20250514",
-    max_tokens: 256,
+    max_tokens: 1024,
     messages: [{ role: "user", content: prompt }],
   });
 

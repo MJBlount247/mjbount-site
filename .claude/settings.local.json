@@ -6,7 +6,13 @@
       "Bash(pnpm dev *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/dashboard/back-garden-pizzeria)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(mv logo-dark-full.svg \"Back-Garden-Pizzeria-Logo_16WoB_Full.svg\")",
+      "Bash(mv logo-red-full.svg \"Back-Garden-Pizzeria-Logo_1WoR_Full.svg\")",
+      "Bash(mv logo-dark.svg \"Back-Garden-Pizzeria-Logo_19WoB_Logo.svg\")",
+      "Bash(mv logo-light.svg \"Back-Garden-Pizzeria-Logo_14BoW_Logo.svg\")",
+      "Bash(mv logo-red.svg \"Back-Garden-Pizzeria-Logo_4RoW_Logo.svg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/dashboard)"
     ]
   }
 }

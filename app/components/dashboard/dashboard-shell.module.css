@@ -1,0 +1,236 @@
+.shell {
+  min-height: 100vh;
+  background: var(--dash-bg);
+  color: var(--dash-text-primary);
+  font-family: var(--font-primary);
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 32px;
+  border-bottom: 1px solid var(--dash-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--dash-bg);
+}
+
+.backLink {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--dash-text-primary);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.logoWrap {
+  border-radius: 6px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  object-fit: contain;
+  height: 36px;
+  width: auto;
+}
+
+.clientInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.clientName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dash-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clientDomain {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+}
+
+.topBarActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.alertBadge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.lastUpdated {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+  white-space: nowrap;
+}
+
+.exportBtn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--dash-border);
+  color: var(--dash-text-primary);
+  text-decoration: none;
+  transition: border-color 0.15s;
+  white-space: nowrap;
+}
+
+.exportBtn:hover {
+  border-color: var(--dash-accent);
+}
+
+/* ── Main content ────────────────────────────────────────────────────────── */
+
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── AI summary ──────────────────────────────────────────────────────────── */
+
+.summaryCard {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-left: 3px solid var(--dash-accent);
+  border-radius: var(--dash-radius);
+  padding: 20px 24px;
+}
+
+.summaryLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dash-accent);
+  margin-bottom: 10px;
+}
+
+.summaryText {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--dash-text-primary);
+  white-space: pre-wrap;
+}
+
+.summaryMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--dash-text-muted);
+}
+
+.refreshBtn {
+  font-size: 12px;
+  color: var(--dash-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.refreshBtn:hover {
+  text-decoration: underline;
+}
+
+.generateBtn {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--dash-accent);
+  background: none;
+  border: 1px solid var(--dash-accent);
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.generateBtn:hover {
+  background: var(--dash-accent);
+  color: #fff;
+}
+
+.summaryPlaceholder {
+  font-size: 14px;
+  color: var(--dash-text-muted);
+}
+
+.summaryPlaceholder code {
+  font-family: monospace;
+  font-size: 12px;
+  background: var(--dash-border);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ── Module grid ─────────────────────────────────────────────────────────── */
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topBar {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .topBarActions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .main {
+    padding: 20px 16px;
+  }
+}

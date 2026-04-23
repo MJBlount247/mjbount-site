@@ -3,12 +3,7 @@ import { formatDuration, formatNumber, topPagesWithPercent } from "@/lib/analyti
 
 import styles from "./top-pages.module.css";
 
-type TopPagesProps = {
-  pages: TopPage[];
-  totalPageviews: number;
-};
-
-export function TopPages({ pages, totalPageviews }: TopPagesProps) {
+export function TopPages({ pages, totalPageviews }: { pages: TopPage[]; totalPageviews: number }) {
   const withPct = topPagesWithPercent(pages, totalPageviews);
 
   return (

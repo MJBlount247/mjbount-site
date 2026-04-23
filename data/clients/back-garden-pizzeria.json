@@ -1,31 +1,130 @@
 {
+  "client": "Back Garden Pizzeria",
   "slug": "back-garden-pizzeria",
-  "name": "Back Garden Pizzeria",
-  "tagline": "Wood-fired pizza in the heart of Cambridge",
+  "domain": "backgardenpizzeria.com",
+  "ga4_property_id": "484039638",
+  "contact": {
+    "name": "Danny",
+    "email": "hello@backgardenpizzeria.com",
+    "phone": "07459763537",
+    "address": "35 St Stephens Street, Bristol, BS1 1JX"
+  },
   "brand": {
-    "primary": "#C8352A",
-    "secondary": "#F5F0E8",
-    "accent": "#1A1A1A",
-    "primaryText": "#FFFFFF",
-    "secondaryText": "#1A1A1A"
+    "primary": "#C44A0C",
+    "secondary": "#1D242B",
+    "accent": "#F2B53B",
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "font_heading": "Prater Sans Pro",
+    "font_heading_weight": "Bold",
+    "font_subheading": "Prater Sans Pro",
+    "font_subheading_weight": "Regular",
+    "font_body": "Karla",
+    "font_body_weight": "Bold",
+    "font_fallback": "Any thick bold font, written in capitals",
+    "font_notes": "Prater Sans Pro requires Adobe activation. Karla Bold is available free on Google Fonts. Use Karla for web/dashboard contexts unless Adobe Fonts embed is active.",
+    "logo": {
+      "_note": "All files in /public/clients/back-garden-pizzeria/. Naming convention: [variant]_[colourCode]_[type].svg",
+      "full_orange_on_black": {
+        "file": "Back-Garden-Pizzeria-Logo_16WoB_Full.svg",
+        "description": "Full horizontal lockup — orange on black background",
+        "use_on": "Dark/black backgrounds, hero sections"
+      },
+      "full_white_on_black": {
+        "file": "Back-Garden-Pizzeria-Logo_16WoB_Full.svg",
+        "description": "Full horizontal lockup — white on black background",
+        "use_on": "Dark/black backgrounds where orange feels too heavy"
+      },
+      "full_white_on_red": {
+        "file": "Back-Garden-Pizzeria-Logo_1WoR_Full.svg",
+        "description": "Full horizontal lockup — white on primary orange/red background",
+        "use_on": "Orange/primary colour backgrounds"
+      },
+      "icon_white_on_black": {
+        "file": "Back-Garden-Pizzeria-Logo_19WoB_Logo.svg",
+        "description": "Icon/mark only — white on black",
+        "use_on": "Favicon, app icon, small contexts on dark backgrounds"
+      },
+      "icon_black_on_white": {
+        "file": "Back-Garden-Pizzeria-Logo_14BoW_Logo.svg",
+        "description": "Icon/mark only — black on white",
+        "use_on": "Small contexts on light backgrounds"
+      },
+      "icon_orange_on_white": {
+        "file": "Back-Garden-Pizzeria-Logo_4RoW_Logo.svg",
+        "description": "Icon/mark only — orange on white",
+        "use_on": "Light backgrounds where brand colour should show"
+      }
+    },
+    "logo_usage": "Always keep name and logo mark prominent. Use full lockup where space allows. Drop to icon-only for favicon and small contexts. Match logo colour variant to background for maximum contrast.",
+    "logo_designer": "Cai Burton — info@caiburton.co.uk",
+    "tone_of_voice": "warm, personal, community-driven, unpretentious, passionate about food",
+    "brand_personality": "Founder-led Bristol sourdough pizzeria. Started in a back garden, grown through community and word of mouth. Handcrafted, real, Bristol-rooted.",
+    "tagline": "Sourdough pizza & authentic Italian food"
   },
-  "logo": {
-    "dark": "/clients/back-garden-pizzeria/logo-dark.svg",
-    "darkFull": "/clients/back-garden-pizzeria/logo-dark-full.svg",
-    "light": "/clients/back-garden-pizzeria/logo-light.svg",
-    "red": "/clients/back-garden-pizzeria/logo-red.svg",
-    "redFull": "/clients/back-garden-pizzeria/logo-red-full.svg"
+  "social": {
+    "facebook": "https://www.facebook.com/BackGardenPizza/",
+    "instagram": null,
+    "twitter": null
   },
-  "ga4PropertyId": "properties/316842951",
-  "gtmContainerId": "GTM-WKXP7QR",
   "business": {
-    "type": "Restaurant",
-    "location": "Cambridge, UK",
-    "website": "https://backgardenpizzeria.co.uk",
-    "services": ["Wood-fired pizza", "Private events", "Catering", "Takeaway"]
+    "type": "restaurant",
+    "location": "Bristol, UK",
+    "founded": "2020",
+    "description": "Bristol-based sourdough pizzeria with a Sicilian twist, founded by Danny during lockdown. Started as a back garden delivery service, now a city centre restaurant and mobile catering arm.",
+    "usp": "Authentic Neapolitan sourdough pizza made entirely in-house with quality seasonal ingredients. A decade of experience and a genuine founder story.",
+    "services": [
+      "Dine-in pizzeria",
+      "Order & collect",
+      "Private hire & events",
+      "Festival catering (The Big Arancini)",
+      "Table reservations"
+    ],
+    "sub_brands": [
+      {
+        "name": "The Big Arancini",
+        "url": "https://backgardenpizzeria.com/the-big-arancini/",
+        "description": "Mobile catering for festivals, markets and private events"
+      }
+    ],
+    "target_audience": "Bristol locals, food lovers, festival-goers, event planners looking for catering"
   },
-  "toneOfVoice": "Warm, community-focused, artisan. Emphasise quality ingredients, the wood-fired experience, and the welcoming Cambridge atmosphere.",
+  "website": {
+    "platform": "WordPress",
+    "built_by": "MJBlount Web Design",
+    "key_pages": [
+      { "label": "Home", "url": "/" },
+      { "label": "Pizzeria", "url": "/pizzeria/" },
+      { "label": "The Big Arancini", "url": "/the-big-arancini/" },
+      { "label": "Menu", "url": "/menu/" },
+      { "label": "About Us", "url": "/about/" },
+      { "label": "Reservations", "url": "/reservations/" },
+      { "label": "Order & Collect", "url": "https://order.backgardenpizzeria.com/" }
+    ],
+    "key_conversions": [
+      "Book a table (reservations page)",
+      "Online order (order.backgardenpizzeria.com)",
+      "Event enquiry / catering contact"
+    ],
+    "gtm_container_id": "GTM-TVFWWR9S",
+    "analytics_goals": [
+      "Book a table clicks",
+      "Order & collect clicks",
+      "Contact form submissions",
+      "Phone number clicks",
+      "Menu page views"
+    ]
+  },
   "dashboard": {
-    "reportingPeriodDays": 30
-  }
+    "theme_override": {
+      "card_radius": "12px",
+      "chart_color_primary": "#C44A0C",
+      "chart_color_secondary": "#F2B53B",
+      "chart_color_dark": "#1D242B",
+      "dashboard_logo": "Back-Garden-Pizzeria-Logo_16WoB_Full.svg",
+      "dashboard_background": "#1D242B",
+      "dashboard_text": "#FFFFFF"
+    }
+  },
+  "notes": "Copy all SVG logo files to /public/clients/back-garden-pizzeria/. Fill in GA4 property ID and GTM container ID once analytics are live. Confirm Instagram handle with Danny."
 }

@@ -1,0 +1,17 @@
+.stub {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stubTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dash-text-primary);
+}
+
+.stubHint {
+  font-size: 13px;
+  color: var(--dash-text-muted);
+  line-height: 1.6;
+}

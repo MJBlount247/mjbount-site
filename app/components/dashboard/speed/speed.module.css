@@ -1,0 +1,285 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Page tabs ────────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tab {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--dash-border);
+  background: transparent;
+  color: var(--dash-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  border-color: var(--dash-accent);
+  color: var(--dash-text-primary);
+}
+
+.tabActive {
+  background: var(--dash-accent);
+  border-color: var(--dash-accent);
+  color: #fff;
+}
+
+/* ── Loading ─────────────────────────────────────────────────── */
+
+.loading {
+  font-size: 13px;
+  color: var(--dash-text-muted);
+  padding: 24px 0;
+  text-align: center;
+}
+
+/* ── Device cards ────────────────────────────────────────────── */
+
+.deviceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.deviceCard {
+  background: var(--dash-bg);
+  border-radius: 8px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.deviceLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dash-text-muted);
+}
+
+.ring {
+  flex-shrink: 0;
+}
+
+.subScores {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.subScore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subScoreLabel {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+}
+
+.subScoreValue {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Section title ───────────────────────────────────────────── */
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dash-text-muted);
+  margin: 0 0 10px;
+}
+
+/* ── CWV grid ────────────────────────────────────────────────── */
+
+.cwvGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.cwvCard {
+  background: var(--dash-bg);
+  border-radius: 8px;
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cwvLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dash-text-muted);
+}
+
+.cwvValue {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.cwvTarget {
+  font-size: 10px;
+  color: var(--dash-text-muted);
+  margin-bottom: 4px;
+}
+
+.cwvBar {
+  height: 3px;
+  background: var(--dash-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cwvBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ── Opportunities ───────────────────────────────────────────── */
+
+.opportunities {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.opportunityRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--dash-border);
+}
+
+.opportunityRow:last-child {
+  border-bottom: none;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.dotRed   { background: #ef4444; }
+.dotAmber { background: #f59e0b; }
+
+.opportunityText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.opportunityTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dash-text-primary);
+  line-height: 1.3;
+}
+
+.opportunityDesc {
+  font-size: 11px;
+  color: var(--dash-text-muted);
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.opportunitySaving {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Full report link ────────────────────────────────────────── */
+
+.fullReportLink {
+  font-size: 13px;
+  color: var(--dash-accent);
+  text-decoration: none;
+}
+
+.fullReportLink:hover { text-decoration: underline; }
+
+/* ── Empty state ─────────────────────────────────────────────── */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emptyTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dash-text-primary);
+}
+
+.emptyHint {
+  font-size: 13px;
+  color: var(--dash-text-muted);
+  line-height: 1.6;
+}
+
+.emptyHint code {
+  font-family: monospace;
+  font-size: 12px;
+  background: var(--dash-border);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.emptyUrl {
+  font-size: 12px;
+  color: var(--dash-text-muted);
+  font-family: monospace;
+}
+
+.retryBtn {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--dash-border);
+  background: transparent;
+  color: var(--dash-text-primary);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.retryBtn:hover {
+  border-color: var(--dash-accent);
+  color: var(--dash-accent);
+}
