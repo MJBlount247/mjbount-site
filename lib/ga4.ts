@@ -2,7 +2,14 @@ import type { AnalyticsData, ClientConfig, DailyMetric, TopPage, TrafficSource }
 
 async function fetchFromGA4(client: ClientConfig, days: number): Promise<AnalyticsData> {
   const { BetaAnalyticsDataClient } = await import("@google-analytics/data");
-  const analyticsClient = new BetaAnalyticsDataClient();
+
+  let analyticsClient: InstanceType<typeof BetaAnalyticsDataClient>;
+  if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
+    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+    analyticsClient = new BetaAnalyticsDataClient({ credentials });
+  } else {
+    analyticsClient = new BetaAnalyticsDataClient();
+  }
   const property = `properties/${client.ga4_property_id}`;
   const dateRange = { startDate: `${days}daysAgo`, endDate: "today" };
 
